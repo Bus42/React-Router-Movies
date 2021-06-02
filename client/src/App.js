@@ -10,13 +10,10 @@ export default function App() {
   const [saved, setSaved] = useState([]); // Stretch: the ids of "saved" movies
   const [movieList, setMovieList] = useState([]);
 
-  const BASE_URL = 'http://localhost:5000/';
-  const MOVIES_ENDPOINT = 'api/movies/';
-
   useEffect(() => {
     const getMovies = () => {
       axios
-        .get(`${BASE_URL}${MOVIES_ENDPOINT}`) // Study this endpoint with Postman
+        .get('http://localhost:5000/api/movies') // Study this endpoint with Postman
         .then(response => {
           // Study this response with a breakpoint or log statements
           // and set the response data as the 'movieList' slice of state
@@ -38,7 +35,7 @@ export default function App() {
       <SavedList list={[ /* This is stretch */]} />
 
       <Switch>
-        <Route path="api/movies/:id" >
+        <Route path="/movies/:id" >
           <Movie />
         </Route>
         <Route path='/' >
